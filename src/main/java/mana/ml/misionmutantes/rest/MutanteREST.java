@@ -9,14 +9,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import static mana.ml.misionmutantes.rest.RegistroADNREST.isMutante;
 
 @RestController
-@RequestMapping("/mutante")
+@RequestMapping("/mutant")
 public class MutanteREST {
 
     @Autowired
@@ -38,8 +37,11 @@ public class MutanteREST {
             } else {
                 mutante.setMutante(false);
             }
+
             Mutante guard = mutanteService.save(mutante);
-            return ResponseEntity.created(new URI("/mutante/ " + guard.isMutante())).body(guard);
+            return (mutante.isMutante())
+                     ? ResponseEntity.status(HttpStatus.OK).build()
+                     : ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

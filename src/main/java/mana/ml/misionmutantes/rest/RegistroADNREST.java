@@ -27,7 +27,7 @@ public class RegistroADNREST {
 
     @Autowired
     private HumanosADNService humanosADNService;
-    static private int filas = 7;
+    static private int filas = 6;
 
     @GetMapping
     private List<DtoADN> consultaResgistros(){

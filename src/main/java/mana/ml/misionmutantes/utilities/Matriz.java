@@ -37,6 +37,6 @@ public class Matriz {
 
     @Override
     public String toString(){
-        return "Matriz {"+"valor="+valor+", pos="+posStr+"}";
+        return "Matriz {"+"valor="+valor+", pos="+pos+"}";
     }
 }
